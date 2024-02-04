@@ -1,0 +1,42 @@
+[
+    {
+        "id": "d1",
+        "type": "date"
+    },
+    {
+        "id": "n1",
+        "type": "numeric",
+        "defaultValue": 5.2,
+        "step": 0.2,
+        "validation": {
+            "max": 10,
+            "min": 0,
+            "required": true
+        }
+    },
+    {
+        "id": "s1",
+        "type": "string",
+        "multiline": {
+            "rows": 3
+        },
+        "eventSubscriptions": [
+            {
+                "controlId": "n1",
+                "expression": {
+                    "n1.value": 0
+                },
+                "action": "disable"
+            }
+        ]
+    },
+    {
+        "id": "t1",
+        "type": "time",
+        "range": true,
+        "validation": {
+            "allowUnboundedRange": true,
+            "required": true
+        }
+    }
+]

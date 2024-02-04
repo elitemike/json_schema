@@ -1,0 +1,115 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "/string",
+    "type": "object",
+    "title": "The String Schema",
+    "allOf": [
+        {
+            "$ref": "controlBase.schema.json"
+        }
+    ],
+    "properties": {
+        "value": {
+            "description": "This should not be set, only set default value",
+            "readOnly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "defaultValue": {
+            "type": "string"
+        },
+        "placeholder": {
+            "type": "string"
+        },
+        "mask": {
+            "type": "string"
+        },
+        "promptChar": {
+            "type": "string",
+            "maxLength": 1
+        },
+        "multiline": {
+            "type": [
+                "object",
+                "boolean"
+            ],
+            "properties": {
+                "rows": {
+                    "type": "integer"
+                }
+            }
+        },
+        "inputType": {
+            "type": "string",
+            "enum": [
+                "regularExpression",
+                "standard"
+            ]
+        },
+        "width": {
+            "oneOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string",
+                    "pattern": "^((100)|(\\d{1,2}?))%$"
+                }
+            ]
+        },
+        "textTransform": {
+            "type": "string",
+            "enum": [
+                "lowercase",
+                "uppercase",
+                "capitalize"
+            ]
+        },
+        "validation": {
+            "type": "object",
+            "properties": {
+                "regEx": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "minLength": {
+                    "type": "integer"
+                },
+                "maxLength": {
+                    "type": "integer"
+                },
+                "validateExternal": {
+                    "type": "boolean"
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "floatLabelType": {
+            "type": "string",
+            "enum": [
+                "Never",
+                "Always",
+                "Auto"
+            ]
+        },
+        "initialFocus": {
+            "type:": "boolean"
+        },
+        "selectorModal": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "fileSelector"
+                    ]
+                }
+            },
+            "unevaluatedProperties": false
+        }
+    }
+}

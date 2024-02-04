@@ -1,0 +1,38 @@
+{
+    "id": "/eventSubscriptionAction",
+    "oneOf": [
+        {
+            "type": "string",
+            "enum": [
+                "disable",
+                "hide",
+                "reset",
+                "clear",
+                "resetValidation"
+            ]
+        },
+        {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "updateValue",
+                        "updateValidation"
+                    ]
+                },
+                "value": {
+                    "type": [
+                        "object",
+                        "string",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "unevaluatedProperties": false
+        }
+    ]
+}

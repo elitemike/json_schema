@@ -1,0 +1,76 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "/numeric",
+    "type": "object",
+    "title": "The Numeric Schema",
+    "allOf": [
+        {
+            "$ref": "controlBase.schema.json"
+        }
+    ],
+    "properties": {
+        "value": {
+            "description": "This should not be set, only set default value",
+            "readOnly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "defaultValue": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "format": {
+            "type": "string"
+        },
+        "step": {
+            "type": "number",
+            "minimum": 0
+        },
+        "width": {
+            "oneOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string",
+                    "pattern": "^((100)|(\\d{1,2}?))%$"
+                }
+            ],
+            "minimum": 0
+        },
+        "placeholder": {
+            "type": "string"
+        },
+        "decimals": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "validation": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "type": "boolean"
+                },
+                "min": {
+                    "type": "integer"
+                },
+                "max": {
+                    "type": "integer"
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "floatLabelType": {
+            "type": "string",
+            "enum": [
+                "Never",
+                "Always",
+                "Auto"
+            ]
+        }
+    }
+}

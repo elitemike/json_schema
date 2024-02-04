@@ -1,0 +1,34 @@
+{
+    "id": "/controlBase",
+    "description": "Created with Liquid Studio (https://www.liquid-technologies.com)",
+    "title": "My schema",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "label": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "helpText": {
+            "type": "string"
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "additionalProperties": true
+        },
+        "eventSubscriptions": {
+            "$ref": "eventSubscriptions.schema.json"
+        }
+    }
+}

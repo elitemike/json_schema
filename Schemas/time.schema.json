@@ -1,0 +1,75 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "/time",
+    "type": "object",
+    "title": "The Time Schema",
+    "allOf": [
+        {
+            "$ref": "controlBase.schema.json"
+        }
+    ],
+    "$defs": {
+        "value": {
+            "oneOf": [
+                {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "startTime": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "endTime": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "unevaluatedProperties": false
+                }
+            ]
+        }
+    },
+    "properties": {
+        "value": {
+            "description": "This should not be set, only set default value",
+            "readOnly": true,
+            "$ref": "#/$defs/value"
+        },
+        "defaultValue": {
+            "$ref": "#/$defs/value"
+        },
+        "validation": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "type": "boolean"
+                },
+                "allowUnboundedRange": {
+                    "type": "boolean"
+                }
+            },
+            "unevaluatedProperties": false
+        },
+        "range": {
+            "type": "boolean"
+        },
+        "startText": {
+            "type": "string"
+        },
+        "endText": {
+            "type": "string"
+        },
+        "reversed": {
+            "type": "boolean"
+        }
+    }
+}

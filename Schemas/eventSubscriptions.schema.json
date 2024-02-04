@@ -1,0 +1,103 @@
+{
+    "id": "/eventSubscriptions",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "controlId": {
+                "type": "string"
+            },
+            "controls": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "controlId": {
+                                    "type": "string"
+                                },
+                                "event": {
+                                    "oneOf": [
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "validationChanged",
+                                                "valueChanged"
+                                            ]
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "validationChanged",
+                                                    "valueChanged"
+                                                ]
+                                            },
+                                            "uniqueItems": true
+                                        }
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "controlId",
+                                "event"
+                            ]
+                        }
+                    ]
+                }
+            },
+            "expression": {
+                "type": "object"
+            },
+            "action": {
+                "oneOf": [
+                    {
+                        "$ref": "eventSubscriptionAction.schema.json"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "$ref": "eventSubscriptionAction.schema.json"
+                        }
+                    }
+                ]
+            },
+            "event": {
+                "type": "string",
+                "enum": [
+                    "validationChanged",
+                    "valueChanged"
+                ]
+            },
+            "rules": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "operator": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": [
+                                "string",
+                                "null",
+                                "boolean",
+                                "number",
+                                "integer"
+                            ]
+                        },
+                        "action": {
+                            "$ref": "eventSubscriptionAction.schema.json"
+                        }
+                    }
+                }
+            }
+        },
+        "unevaluatedProperties": false
+    }
+}

@@ -1,0 +1,107 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "/root",
+    "type": "array",
+    "title": "Root",
+    "minItems": 1,
+    "items": {
+        "type": "object",
+        "unevaluatedProperties": false,
+        "required": [
+            "id",
+            "type"
+        ],
+        "properties": {
+            "id": {
+                "type": "string"
+            },
+            "type": {
+                "type": "string",
+                "enum": [
+                    "date",
+                    "numeric",
+                    "string",
+                    "time"
+                ]
+            }
+        },
+        "allOf": [
+            {
+                "if": {
+                    "properties": {
+                        "type": {
+                            "const": "date"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                },
+                "then": {
+                    "allOf": [
+                        {
+                            "$ref": "date.schema.json"
+                        }
+                    ]
+                }
+            },
+            {
+                "if": {
+                    "properties": {
+                        "type": {
+                            "const": "numeric"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                },
+                "then": {
+                    "allOf": [
+                        {
+                            "$ref": "numeric.schema.json"
+                        }
+                    ]
+                }
+            },
+            {
+                "if": {
+                    "properties": {
+                        "type": {
+                            "const": "string"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                },
+                "then": {
+                    "allOf": [
+                        {
+                            "$ref": "string.schema.json"
+                        }
+                    ]
+                }
+            },
+            {
+                "if": {
+                    "properties": {
+                        "type": {
+                            "const": "time"
+                        }
+                    },
+                    "required": [
+                        "type"
+                    ]
+                },
+                "then": {
+                    "allOf": [
+                        {
+                            "$ref": "time.schema.json"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
